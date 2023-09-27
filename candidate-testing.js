@@ -24,11 +24,9 @@ function askForName () {
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-  
+
   for (i = 0; i < questions.length; i++){
-    candidateAnswers[i] = input.question(questions[i]);
-    
-   
+    candidateAnswers[i] = input.question(questions[i]);   
   }
 // candidateAnswer = input.question(question);
 
@@ -36,18 +34,27 @@ function askQuestion() {
 
 function gradeQuiz(candidateAnswers) {
 
+  let numOfQuizQuestions = 5;
+  let numOFCorrectAnswers = 0;
+
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
-for (i = 0; i < candidateAnswers.length || i < correctAnswers; i++){
-      console.log(` your answer: ${candidateAnswers[i]} ------- correct answer: ${correctAnswers[i].toLowerCase()}`)
-}
+  for (i = 0;  i < correctAnswers.length; i++){
+         console.log(`your answer: ${candidateAnswers[i]} .... correct answer: ${correctAnswers[i]}`);    
+  }
   
-  
+  for (i = 0; i < correctAnswers.length; i++){
+    if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()){
+      numOFCorrectAnswers ++;
+    }
+  }
+ 
 
-
-
-
-  let grade = '';  //TODO 3.2 use this variable to calculate the candidates score.
-
+  let grade = (numOFCorrectAnswers) / (numOfQuizQuestions) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+  if ( grade >= 80){
+    console.log(`Congrats! you passed! your score = ${grade}%`);
+  }else{
+    console.log(`You failed. Please try again. your score = ${grade}%`);
+  }
 
   return grade;
 }
@@ -55,10 +62,10 @@ for (i = 0; i < candidateAnswers.length || i < correctAnswers; i++){
 function runProgram() {
   askForName();
   // TODO 1.1c: Greet candidate using their name //
-   console.log("Hi! " + candidateName);
+   console.log("Hi " + candidateName +"!");
   askQuestion();
-   console.log(`your answer: ${candidateAnswers}`);
   gradeQuiz(this.candidateAnswers);
+
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
