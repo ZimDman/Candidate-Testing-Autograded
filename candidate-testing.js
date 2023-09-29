@@ -34,28 +34,36 @@ function askQuestion() {
 
 function gradeQuiz(candidateAnswers) {
 
-  let numOfQuizQuestions = 5;
+  
   let numOFCorrectAnswers = 0;
+  
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
-  for (i = 0;  i < correctAnswers.length; i++){
-         console.log(`your answer: ${candidateAnswers[i]} .... correct answer: ${correctAnswers[i]}`);    
-  }
+
+           
   
-  for (i = 0; i < correctAnswers.length; i++){
+  
+  for (i = 0; i < questions.length; i++){
     if (correctAnswers[i].toLowerCase() === candidateAnswers[i].toLowerCase()){
       numOFCorrectAnswers ++;
+       
     }
+
+    console.log(`${i+1}) ${questions[i]}` );
+    console.log(`your answer: ${candidateAnswers[i]}`);
+    console.log(`incorrect answer: ${correctAnswers[i]}`);
+
   }
  
 
-  let grade = (numOFCorrectAnswers) / (numOfQuizQuestions) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+  let grade = (numOFCorrectAnswers) / (questions.length) * 100;  //TODO 3.2 use this variable to calculate the candidates score.
+  console.log(`>>> Overall Grade = ${grade}% (${numOFCorrectAnswers} 0f ${questions.length} correct) <<<`);
   if ( grade >= 80){
-    console.log(`Congrats! you passed! your score = ${grade}%`);
+    console.log(`>>> Status: Passed! <<<`)
   }else{
-    console.log(`You failed. Please try again. your score = ${grade}%`);
+    console.log(`>>> Status: Failed! <<<`);
   }
-
+  
   return grade;
 }
 
